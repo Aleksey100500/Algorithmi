@@ -1,15 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class lec1 {
 
     public static void main (String[] args) {
-//        double number = findSum(4);
+//        int number = fib(4);
 //        System.out.println(number);
 //        List<Integer> avaliableDivider = findDivider(10);
 //        for (Integer integer: avaliableDivider) {
 //            System.out.println(integer);
 //        }
+        AtomicInteger counter = new AtomicInteger(0);
+        int fib = fib(9, counter);
+        System.out.println("Fib number: " + fib);
+        System.out.println("Counter: " + counter.get());
     }
 // Нахождение четных чисел
     public static List<Integer> findDivider(int number) {
@@ -60,5 +65,13 @@ public class lec1 {
             }
         }
         return ((double) successResult) / ((double) count);
+    }
+
+    public static int fib(int position, AtomicInteger counter) {
+        counter.incrementAndGet();
+        if (position == 1 || position == 2) {
+            return 1;
+        }
+        return fib(position - 1, counter) + fib(position - 2, counter);
     }
 }
