@@ -7,6 +7,8 @@ public class Sem2HW {
         Node previous;
     }
 
+    // Метод разворота двухсвязного списка
+
     public void revert () {
         Node currentNode = head;
         while (currentNode != null) {
